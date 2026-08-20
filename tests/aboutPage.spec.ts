@@ -3,8 +3,7 @@ import { test, expect, type Page, type BrowserContext, Locator } from '@playwrig
 let sharedContext: BrowserContext;
 let aboutPage: Page;
 let title: string = "About RGR"
-let homeURL: string = "http://localhost:8080"
-let aboutURL: string = "http://localhost:8080/about"
+let aboutURL: string = "/about"
 
 test.describe('Basic tests for About page', () => {
 
