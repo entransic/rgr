@@ -29,7 +29,7 @@ jobs:
       run: |
         echo "The workspace is at: $GITHUB_WORKSPACE"
         echo "The current directory is: $PWD"
-        go build -v -o ./cmd/server/bin/app ./cmd/server/main.go
+        go build -v -o $PWD/cmd/server/bin/app $PWD/cmd/server/main.go
 
     # 4. Start the binary in the background and wait for it to be ready 
     - name: Start Go Binary in Background
