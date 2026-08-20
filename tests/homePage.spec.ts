@@ -2,7 +2,7 @@ import { test, expect, type Page, type BrowserContext, Locator } from '@playwrig
 
 let sharedContext: BrowserContext;
 let homePage: Page;
-let title: string = "Red Green Refactor"
+let title: string = "Home Page"
 let homeURL: string = "/"
 let aboutURL: string = "/about"
 let searchURL: string = "/search"

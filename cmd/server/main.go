@@ -1,39 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 )
 
-type Nav struct {
-	Home   HomeNav
-	Submit SubmitNav
-	Search SearchNav
-	About  AboutNav
-}
-
-type HomeNav struct {
-	Title string
-	Link  string
-}
-
-type SubmitNav struct {
-	Title string
-	Link  string
-}
-
-type SearchNav struct {
-	Title string
-	Link  string
-}
-type AboutNav struct {
-	Title string
-	Link  string
-}
-
 type MainPageData struct {
 	Title string
-	Menu  Nav
 }
 
 type AboutPageData struct {
@@ -49,20 +23,15 @@ type SubmitPageData struct {
 }
 
 func mainpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/index.html")
+	temp, err := template.ParseFiles("../../web/index.html", "../../web/partials/nav.html")
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	data := MainPageData{
-		Title: "Red Green Refactor",
-		Menu: Nav{
-			Home:   HomeNav{Title: "Home", Link: "/"},
-			Search: SearchNav{Title: "Search", Link: "/search"},
-			Submit: SubmitNav{Title: "Submit", Link: "/submit"},
-			About:  AboutNav{Title: "About", Link: "/about"},
-		},
+		Title: "Home Page",
 	}
 	err = temp.Execute(w, data)
 	if err != nil {
@@ -72,24 +41,27 @@ func mainpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func aboutpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/about.html")
+	temp, err := template.ParseFiles("../../web/about.html", "../../web/partials/nav.html")
 
-	data := AboutPageData{
-		Title: "About RGR",
-	}
 	if err != nil {
+		fmt.Println("Error parsing template:", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
+	data := AboutPageData{
+		Title: "About Page",
+	}
 	err = temp.Execute(w, data)
 	if err != nil {
+		fmt.Println("Error executing template:", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
 
 func searchpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/search.html")
+	temp, err := template.ParseFiles("../../web/search.html", "../../web/partials/nav.html")
 
 	data := SearchPageData{
 		Title: "Search RGR",
@@ -106,7 +78,7 @@ func searchpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func submitpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/submit.html")
+	temp, err := template.ParseFiles("../../web/submit.html", "../../web/partials/nav.html")
 
 	data := SubmitPageData{
 		Title: "Submit with RGR",
