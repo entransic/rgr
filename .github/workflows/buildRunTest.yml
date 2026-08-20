@@ -25,7 +25,6 @@ jobs:
     # 3. Compile the Go application into an executable binary
     - name: Build Go Binary
       working-directory: /home/runner/work/rgr/rgr
-
       run: |
         echo "The workspace is at: $GITHUB_WORKSPACE"
         echo "The current directory is: $PWD"
@@ -39,7 +38,8 @@ jobs:
         echo "The current directory is: $PWD"
         nohup ./cmd/server/bin/app > server.log 2>&1 &
 
-    - name: wait for server, install playwright, and run tests
+    # 5. Validate web app connection install playwriight and run playwright tests
+    - name: Confirm connected, Install Playwright, Run tests
       working-directory: /home/runner/work/rgr/rgr
       run: |
         echo "The workspace is at: $GITHUB_WORKSPACE"
