@@ -23,7 +23,7 @@ type SubmitPageData struct {
 }
 
 func mainpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("./web/index.html", "./web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/index.html", "./web/partials/nav.html", "./web/partials/footer.html")
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -38,7 +38,7 @@ func mainpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func aboutpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("./web/about.html", "./web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/about.html", "./web/partials/nav.html", "./web/partials/footer.html")
 
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
@@ -55,7 +55,7 @@ func aboutpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func searchpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("./web/search.html", "./web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/search.html", "./web/partials/nav.html", "./web/partials/footer.html")
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -69,7 +69,7 @@ func searchpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func submitpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("./web/submit.html", "./web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/submit.html", "./web/partials/nav.html", "./web/partials/footer.html")
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
