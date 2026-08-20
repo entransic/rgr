@@ -37,7 +37,7 @@ jobs:
         timeout 30s sh -c 'until nc -z localhost 8080; do sleep 1; done'
         npm install -g playwright
         npx playwright install --with-deps
-        npx playwright test --config=./tests
+        npx playwright test 
 
         
 
