@@ -25,7 +25,11 @@ jobs:
     # 3. Compile the Go application into an executable binary
     - name: Build Go Binary
       working-directory: /home/runner/work/rgr/
-      run: go build -v -o ./cmd/server/bin/app ./cmd/server/main.go
+
+      run: |
+        echo "The workspace is at: $GITHUB_WORKSPACE"
+        echo "The current directory is: $PWD"
+        go build -v -o ./cmd/server/bin/app ./cmd/server/main.go
 
     # 4. Start the binary in the background and wait for it to be ready 
     - name: Start Go Binary in Background
