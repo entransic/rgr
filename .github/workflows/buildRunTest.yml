@@ -24,7 +24,7 @@ jobs:
 
     # 3. Compile the Go application into an executable binary
     - name: Build Go Binary
-      working-directory: /home/runner/work/rgr
+      # working-directory: /home/runner/work/rgr
       run: go build -v -o ./cmd/server/bin/app ./cmd/server/main.go
 
     # 4. Start the binary in the background and wait for it to be ready 
