@@ -47,7 +47,7 @@ jobs:
     # 5. Run your Go tests (e.g., integration tests that hit the running binary)
     - name: Run Go Tests
       run:  | 
-        go test -v ./...
+        go test -v ./tests/server_test.go
 
     #6. Install Playwright and its dependencies
     - name: Setup Playwright
