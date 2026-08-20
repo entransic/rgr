@@ -7,14 +7,7 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href={{ .Menu.Home.Link }}>{{ .Menu.Home.Title }}</a></li>
-                <li><a href={{ .Menu.Submit.Link }}>{{ .Menu.Submit.Title }}</a></li>
-                <li><a href={{ .Menu.Search.Link }}>{{ .Menu.Search.Title }}</a></li>
-                <li><a href={{ .Menu.About.Link }}>{{ .Menu.About.Title }}</a></li>
-            </ul>
-        </nav>
+        {{template "nav" .}}
     </header>
     <main>
     </main>
