@@ -24,13 +24,13 @@ jobs:
 
     # 3. Compile the Go application into an executable binary
     - name: Build Go Binary
-      run: go build -v -o   ./cmd/server/main.go
+      run: go build -v -o cmd/server/main.go
 
     # 4. Start the binary in the background and wait for it to be ready
     - name: Start Go Binary in Background
       run: |
-        chmod +x ./cmd/server/bin/app
-        nohup ./cmd/server/bin/app > server.log 2>&1 &
+        chmod +x cmd/server/bin/app
+        nohup cmd/server/bin/app > server.log 2>&1 &
 
     - name: Wait for Server to be Ready
       run: |
