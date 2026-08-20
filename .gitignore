@@ -8,3 +8,4 @@ node_modules/
 
 # go
 /cmd/server/bin/
+pkg/

@@ -3,10 +3,10 @@ import { test, expect, type Page, type BrowserContext, Locator } from '@playwrig
 let sharedContext: BrowserContext;
 let homePage: Page;
 let title: string = "Red Green Refactor"
-let homeURL: string = "http://localhost:8080"
-let aboutURL: string = "http://localhost:8080/about"
-let searchURL: string = "http://localhost:8080/search"
-let submitURL: string = "http://localhost:8080/submit"
+let homeURL: string = "/"
+let aboutURL: string = "/about"
+let searchURL: string = "/search"
+let submitURL: string = "/submit"
 
 
 test.describe('Basic tests for Home page', () => {
