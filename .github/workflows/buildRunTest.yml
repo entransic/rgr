@@ -28,7 +28,7 @@ jobs:
 
     # 4. Start the binary in the background and wait for it to be ready 
     - name: Start Go Binary in Background
-      working-directory: /
+      working-directory: /home/runner/work/rgr
       run: |
         echo "The workspace is at: $GITHUB_WORKSPACE"
         echo "The current directory is: $PWD"
