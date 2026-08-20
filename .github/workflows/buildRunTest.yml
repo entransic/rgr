@@ -24,6 +24,7 @@ jobs:
 
     # 3. Compile the Go application into an executable binary
     - name: Build Go Binary
+      working-directory: /home/runner/work/rgr
       run: go build -v -o ./cmd/server/bin/app ./cmd/server/main.go
 
     # 4. Start the binary in the background and wait for it to be ready 
@@ -32,11 +33,10 @@ jobs:
       run: |
         echo "The workspace is at: $GITHUB_WORKSPACE"
         echo "The current directory is: $PWD"
-        chmod +x ./cmd/server/bin/app
         nohup ./cmd/server/bin/app > server.log 2>&1 &
 
     - name: wait for server, install playwright, and run tests
-      working-directory: /
+      working-directory: /home/runner/work/rgr
       run: |
         echo "The workspace is at: $GITHUB_WORKSPACE"
         echo "The current directory is: $PWD"
