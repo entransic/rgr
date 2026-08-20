@@ -27,13 +27,22 @@ jobs:
       run: go build -v -o ./cmd/server/bin/app  ./cmd/server/main.go
 
     # 4. Start the binary in the background and wait for it to be ready
-    - name: Run Go Binary in Background
+    - name: Start Go Binary in Background
       run: |
-        ./cmd/server/bin/app &
+        chmod +x ./my-go-binary
+        nohup ./my-go-binary > server.log 2>&1 &
+
+    - name: Wait for Server to be Ready
+      run: |
+        timeout 30s sh -c 'until nc -z localhost 8080; do sleep 1; done'
+
+    # - name: Run Go Binary in Background
+    #   run: |
+    #     ./cmd/server/bin/app &
         
-        # Give the binary a few seconds to start up and bind to its port
-        echo "Waiting for application to start..."
-        sleep 3 
+    #     # Give the binary a few seconds to start up and bind to its port
+    #     echo "Waiting for application to start..."
+    #     sleep 3 
 
     # 5. Run your Go tests (e.g., integration tests that hit the running binary)
     - name: Run Go Tests
