@@ -23,17 +23,14 @@ type SubmitPageData struct {
 }
 
 func mainpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/index.html", "../../web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/index.html")
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	data := MainPageData{
-		Title: "Home Page",
-	}
-	err = temp.Execute(w, data)
+	err = temp.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -41,7 +38,7 @@ func mainpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func aboutpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/about.html", "../../web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/about.html")
 
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
@@ -49,10 +46,7 @@ func aboutpage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := AboutPageData{
-		Title: "About Page",
-	}
-	err = temp.Execute(w, data)
+	err = temp.Execute(w, nil)
 	if err != nil {
 		fmt.Println("Error executing template:", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -61,16 +55,13 @@ func aboutpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func searchpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/search.html", "../../web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/search.html")
 
-	data := SearchPageData{
-		Title: "Search RGR",
-	}
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = temp.Execute(w, data)
+	err = temp.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -78,16 +69,13 @@ func searchpage(w http.ResponseWriter, r *http.Request) {
 }
 
 func submitpage(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("../../web/submit.html", "../../web/partials/nav.html")
+	temp, err := template.ParseFiles("./web/submit.html")
 
-	data := SubmitPageData{
-		Title: "Submit with RGR",
-	}
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = temp.Execute(w, data)
+	err = temp.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

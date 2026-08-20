@@ -28,12 +28,18 @@ jobs:
 
     # 4. Start the binary in the background and wait for it to be ready 
     - name: Start Go Binary in Background
+      working-directory: /
       run: |
+        echo "The workspace is at: $GITHUB_WORKSPACE"
+        echo "The current directory is: $PWD"
         chmod +x ./cmd/server/bin/app
         nohup ./cmd/server/bin/app > server.log 2>&1 &
 
     - name: wait for server, install playwright, and run tests
+      working-directory: /
       run: |
+        echo "The workspace is at: $GITHUB_WORKSPACE"
+        echo "The current directory is: $PWD"
         timeout 30s sh -c 'until nc -z localhost 8080; do sleep 1; done'
         npm ci -y
         npm install -g playwright
