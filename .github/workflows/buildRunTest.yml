@@ -26,7 +26,7 @@ jobs:
     - name: Build Go Binary
       run: go build -v -o ./cmd/server/bin/app ./cmd/server/main.go
 
-    # 4. Start the binary in the background and wait for it to be ready
+    # 4. Start the binary in the background and wait for it to be ready then run go tests
     - name: Start Go Binary in Background
       run: |
         chmod +x ./cmd/server/bin/app
@@ -35,21 +35,9 @@ jobs:
     - name: Wait for Server to be Ready
       run: |
         timeout 30s sh -c 'until nc -z localhost 8080; do sleep 1; done'
-
-    # - name: Run Go Binary in Background
-    #   run: |
-    #     ./cmd/server/bin/app &
-        
-    #     # Give the binary a few seconds to start up and bind to its port
-    #     echo "Waiting for application to start..."
-    #     sleep 3 
-
-    # 5. Run your Go tests (e.g., integration tests that hit the running binary)
-    - name: Run Go Tests
-      run:  | 
         go test -v ./tests/server_test.go
 
-    #6. Install Playwright and its dependencies
+    #5. Install Playwright and its dependencies
     - name: Setup Playwright
       uses: actions/setup-node@v4
       with:
