@@ -37,6 +37,9 @@ test.describe("Basic tests for Home page", () => {
     await expect(homePage.locator("header").filter({ has: homePage.locator("nav") })).toBeAttached();
   });
 
+  test("main page will have a <main> element within <body`>", async ({ page }) => {
+    await expect(homePage.locator("body").filter({ has: homePage.locator("main") })).toBeAttached();
+  });
   /*
     check for the presence of the main page navigation elements:
     - check that the main page will have a node Home
