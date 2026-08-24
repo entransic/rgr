@@ -111,6 +111,11 @@ test.describe("Basic tests for Home page", () => {
     await expect(homePage.locator("main").filter({ has: homePage.locator("section") })).toBeAttached();
   });
 
+  test("index page will have an <article> element within <section> for description text", async ({ page }) => {
+    await expect(homePage.locator("section").filter({ has: homePage.locator("article") })).toBeAttached();
+  });
+
+
 
 
   /* 
