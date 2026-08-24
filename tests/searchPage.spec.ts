@@ -17,8 +17,8 @@ test.describe("Basic tests for Search page", () => {
 
     await searchPage.goto(searchURL);
   });
- /* 
-  * `Tests the main DOM elements
+  /* 
+   * `Tests the main DOM elements
   */ 
   test('main page exists and root is present"', async ({ page }) => {
     await expect(searchPage).toHaveURL(searchURL);
