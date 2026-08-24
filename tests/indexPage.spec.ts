@@ -102,6 +102,17 @@ test.describe("Basic tests for Home page", () => {
     await expect(homePage).toHaveURL(submitURL);
   });
 
+  /*
+   * Sections and articles
+   */
+
+
+  test("index page will have a <section> element within <main> for description of app", async ({ page }) => {
+    await expect(homePage.locator("main").filter({ has: homePage.locator("section") })).toBeAttached();
+  });
+
+
+
   /* 
    Check the footer exists 
    has the correct copyright dates
