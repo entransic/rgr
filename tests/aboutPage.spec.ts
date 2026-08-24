@@ -17,7 +17,9 @@ test.describe("Basic tests for About page", () => {
 
     await aboutPage.goto(aboutURL);
   });
-
+/*
+ * Tests the DOM elements
+ */
   test('main page exists and root is present"', async ({ page }) => {
     await expect(aboutPage).toHaveURL(aboutURL);
   });
@@ -28,6 +30,10 @@ test.describe("Basic tests for About page", () => {
 
   test("about page will have a <nav> element within <header>", async ({ page }) => {
     await expect(aboutPage.locator("header").filter({ has: aboutPage.locator("nav") })).toBeAttached();
+  });
+
+  test("about page will have a <main> element within <body>", async ({ page }) => {
+    await expect(aboutPage.locator("body").filter({ has: aboutPage.locator("main") })).toBeAttached();
   });
 
   /* 
