@@ -36,6 +36,11 @@ test.describe("Basic tests for Search page", () => {
     await expect(searchPage.locator("body").filter({ has: searchPage.locator("main") })).toBeAttached();
   });
 
+  test("search page will have a <aside> element within <body>", async ({ page }) => {
+    await expect(searchPage.locator("body").filter({ has: searchPage.locator("aside") })).toBeAttached();
+  });
+
+
   /* 
    Test the nav is present from the template and has the correct nodes:
    - check that the nav will have a node Home
