@@ -20,28 +20,28 @@ test.describe("Basic tests for Home page", () => {
 
   /*
    check for the presence of the main page elements:
-    - check that the main page exists and the root is present
-    - check that the main page has the title "Red Green Refactor"
-    - check that the main page has html semantic element <main>
-    - check that the main page will have a <nav> element within <header>
+    - check that the index page exists and the root is present
+    - check that the index page has the title "Red Green Refactor"
+    - check that the index page has html semantic element <main>
+    - check that the index page will have a <nav> element within <header>
   */
-  test('main page exists and root is present"', async ({ page }) => {
+  test('index page exists and root is present"', async ({ page }) => {
     await expect(homePage).toHaveURL(homeURL);
   });
 
-  test('main page has the title "Home Page"', async ({ page }) => {
+  test("index page has the title 'Home Page'", async ({ page }) => {
     await expect(homePage).toHaveTitle(title);
   });
 
-  test("main page will have a <nav> element within <header>", async ({ page }) => {
+  test("index page will have a <nav> element within <header>", async ({ page }) => {
     await expect(homePage.locator("header").filter({ has: homePage.locator("nav") })).toBeAttached();
   });
 
-  test("main page will have a <main> element within <body>", async ({ page }) => {
+  test("index page will have a <main> element within <body>", async ({ page }) => {
     await expect(homePage.locator("body").filter({ has: homePage.locator("main") })).toBeAttached();
   });
 
-  test("main page will have a <aside> element within <body>", async ({ page }) => {
+  test("index page will have a <aside> element within <body>", async ({ page }) => {
     await expect(homePage.locator("body").filter({ has: homePage.locator("aside") })).toBeAttached();
   });
 

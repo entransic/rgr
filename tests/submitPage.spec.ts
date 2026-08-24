@@ -18,16 +18,24 @@ test.describe("Basic tests for Submit page", () => {
     await submitPage.goto(searchURL);
   });
 
-  test('main page exists and root is present"', async ({ page }) => {
+  test('submit page exists and root is present"', async ({ page }) => {
     await expect(submitPage).toHaveURL(searchURL);
   });
 
-  test('search page has the title "Search RGR"', async ({ page }) => {
+  test('submit page has the title "Search RGR"', async ({ page }) => {
     await expect(submitPage).toHaveTitle(title);
   });
 
-  test("search page will have a <nav> element within <header>", async ({ page }) => {
+  test("submit page will have a <nav> element within <header>", async ({ page }) => {
     await expect(submitPage.locator("header").filter({ has: submitPage.locator("nav") })).toBeAttached();
+  });
+
+  test("submit page will have a <aside> element within <header>", async ({ page }) => {
+    await expect(submitPage.locator("body").filter({ has: submitPage.locator("aside") })).toBeAttached();
+  });
+
+  test("submit page will have a <main> element within <header>", async ({ page }) => {
+    await expect(submitPage.locator("body").filter({ has: submitPage.locator("main") })).toBeAttached();
   });
 
   /* 

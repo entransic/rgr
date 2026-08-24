@@ -17,10 +17,10 @@ test.describe("Basic tests for Search page", () => {
 
     await searchPage.goto(searchURL);
   });
-  /* 
+  /*
    * `Tests the main DOM elements
-  */ 
-  test('main page exists and root is present"', async ({ page }) => {
+   */
+  test('search page exists and root is present"', async ({ page }) => {
     await expect(searchPage).toHaveURL(searchURL);
   });
 
@@ -39,7 +39,6 @@ test.describe("Basic tests for Search page", () => {
   test("search page will have a <aside> element within <body>", async ({ page }) => {
     await expect(searchPage.locator("body").filter({ has: searchPage.locator("aside") })).toBeAttached();
   });
-
 
   /* 
    Test the nav is present from the template and has the correct nodes:

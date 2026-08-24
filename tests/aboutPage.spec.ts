@@ -17,10 +17,10 @@ test.describe("Basic tests for About page", () => {
 
     await aboutPage.goto(aboutURL);
   });
-/*
- * Tests the DOM elements
- */
-  test('main page exists and root is present"', async ({ page }) => {
+  /*
+   * Tests the DOM elements
+   */
+  test('about page exists and root is present"', async ({ page }) => {
     await expect(aboutPage).toHaveURL(aboutURL);
   });
 
