@@ -17,7 +17,9 @@ test.describe("Basic tests for Search page", () => {
 
     await searchPage.goto(searchURL);
   });
-
+ /* 
+  * `Tests the main DOM elements
+  */ 
   test('main page exists and root is present"', async ({ page }) => {
     await expect(searchPage).toHaveURL(searchURL);
   });
@@ -28,6 +30,10 @@ test.describe("Basic tests for Search page", () => {
 
   test("search page will have a <nav> element within <header>", async ({ page }) => {
     await expect(searchPage.locator("header").filter({ has: searchPage.locator("nav") })).toBeAttached();
+  });
+
+  test("search page will have a <main> element within <body>", async ({ page }) => {
+    await expect(searchPage.locator("body").filter({ has: searchPage.locator("main") })).toBeAttached();
   });
 
   /* 
