@@ -69,6 +69,11 @@ test.describe("Basic tests for Home page", () => {
     await expect(homePage.getByRole("link", { name: "Submit" })).toBeVisible();
   });
 
+  test("the nav will have the application name rarify", async ({ page }) => {
+    await expect(homePage.locator('header').getByText('Rarify')).toBeVisible();
+  });
+
+
   /* 
   check that the main page navigation elements will take the user to the correct page:
   - check that the Home node will take the user to the home page
