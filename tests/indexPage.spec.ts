@@ -155,6 +155,13 @@ test.describe("Basic tests for Home page", () => {
     }
   })
 
+  test("the 4 unique articles within the first section will have unique ids for the reports", async({page}) => {
+    let id:string = ["report-open-closed", "report-find-rate", "report-fix-rate", "report-by-status"]
+    for (let x=0; x<4; x++){
+      await expect (homePage.locator("section").nth(0).locator("article").nth(x)).toHaveId(id[x]);
+    }
+  })
+
 
   /* 
    Check the footer exists 
