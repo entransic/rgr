@@ -125,6 +125,22 @@ test.describe("Basic tests for Home page", () => {
     }
   })
 
+  test("the 4 unique articles within the first section will have text", async({page}) => {
+    for (let x=0; x<4; x++){
+      await expect (homePage.locator("section").nth(0).locator("article").nth(x)).toContainText("ipsum");
+    }
+  })
+
+  test("the first section will have a h2 with text bug status", async({page}) => {
+      await expect (homePage.locator("section").nth(0).locator("h2").nth(0)).toContainText("bug status");
+  })
+
+  test("the 4 unique articles within the first section will have unique titles for the report types", async({page}) => {
+    let title = ["open/closed", "find rate", "fix rate", "by status"]
+    for (let x=0; x<4; x++){
+      await expect (homePage.locator("section").nth(0).locator("article").nth(x).locator("h3")).toContainText(title[x]);
+    }
+  })
 
 
   /* 
