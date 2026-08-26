@@ -115,6 +115,15 @@ test.describe("Basic tests for Home page", () => {
     await expect(homePage.locator("section").filter({ has: homePage.locator("article") })).toBeAttached();
   });
 
+  test("index page will have at least 4 articles within the section", async({page}) => {
+    await expect (homePage.locator("section").nth(0).locator("article").nth(3)).toBeAttached();
+  })
+
+  test("index page will have 4 unique articles within the section", async({page}) => {
+    for (let x=0; x<4; x++){
+      await expect (homePage.locator("section").nth(0).locator("article").nth(x)).toBeAttached();
+    }
+  })
 
 
 
