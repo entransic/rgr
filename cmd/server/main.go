@@ -82,6 +82,11 @@ func submitpage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func main() {
+
+	fs := http.FileServer(http.Dir("web/static/css"))
+	http.Handle("/css/", http.StripPrefix("/css/", fs))
+
+
 	http.HandleFunc("/", mainpage)
 	http.HandleFunc("/about", aboutpage)
 	http.HandleFunc("/search", searchpage)
