@@ -47,6 +47,10 @@ test.describe("Basic tests for index page footer", () => {
     await expect(homePage.locator("footer")).toContainText("All Rights Reserved");
   });
 
+  test("Verify the footer has the class footer for CSS", async({page})=>{
+    await expect(homePage.locator("footer")).toHaveClass('footer')
+  })
+
 //
 // AFTER ALL TEARDOWN
 //
