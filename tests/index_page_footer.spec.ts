@@ -51,6 +51,10 @@ test.describe("Basic tests for index page footer", () => {
     await expect(homePage.locator("footer")).toHaveClass('footer')
   })
 
+  test("the footer bar will have text color #FFF", async({page}) =>{
+    await expect (homePage.locator("footer")).toHaveCSS("color", "rgb(255, 255, 255)")
+  });
+
 //
 // AFTER ALL TEARDOWN
 //
