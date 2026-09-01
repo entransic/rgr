@@ -59,6 +59,14 @@ test.describe("Basic tests for index page footer", () => {
     await expect (homePage.locator("footer")).toHaveCSS("background-color", "rgb(51, 51, 51)")
   });
 
+  test("the footer bar will have padding of 15px and 30px", async({page}) =>{
+    await expect (homePage.locator("footer")).toHaveCSS("padding","15px 30px") 
+  });
+
+  test("the footer bar will have ia border radius of 10px", async({page}) =>{
+    await expect (homePage.locator("footer")).toHaveCSS("border-radius","10px") 
+  });
+
 //
 // AFTER ALL TEARDOWN
 //

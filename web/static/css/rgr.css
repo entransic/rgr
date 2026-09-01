@@ -5,7 +5,7 @@
   padding: 15px 30px;
   background-color: #333;
   color: #fff;
-  border-radius: 10px;;
+  border-radius: 10px;
 }
 
 #logo {
@@ -32,4 +32,6 @@
  .footer {
   color: #fff;
   background-color: #333;
+  padding: 15px 30px;
+  border-radius: 10px;
  }
