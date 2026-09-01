@@ -67,6 +67,10 @@ test.describe("Basic tests for index page footer", () => {
     await expect (homePage.locator("footer")).toHaveCSS("border-radius","10px") 
   });
 
+  test("the footer bar will have display flex", async({page}) =>{
+    await expect (homePage.locator("footer")).toHaveCSS("display","flex") 
+  });
+
 //
 // AFTER ALL TEARDOWN
 //
