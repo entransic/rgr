@@ -94,6 +94,12 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
+  test("the 4 unique articles within the first section will have unique divs with border-radius of 10px", async ({ page }) => {
+    for (let x: number = 0; x < reportTitle.length; x++) {
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("border-radius", "10px");
+    }
+  });
+
   test("the 4 unique articles within the first section will have unique divs for the graph with a unique css id", async ({
     page,
   }) => {
