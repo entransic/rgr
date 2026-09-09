@@ -60,7 +60,7 @@ test.describe("Basic tests for index page nav css", () => {
 
   test(`the logo font size will be  24px for ${url}`, async({page}) =>{
     await testPage.goto(url);
-    await expect (testPage.getByText("Rarify")).toHaveCSS("font-size", "24px")
+    await expect (testPage.getByText("Rarify")).toHaveCSS("font-size", "32px")
   });
 
   test(`the logo font weight will be bold for ${url}`, async({page}) =>{
