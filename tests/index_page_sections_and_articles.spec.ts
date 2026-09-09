@@ -70,9 +70,15 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with CSS for graphs", async ({ page }) => {
+  test("the 4 unique articles within the first section will have unique divs with CSS class for graphs", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toContainClass("report");
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toContainClass("graph");
+    }
+  });
+
+  test("the 4 unique articles within the first section will have unique divs with a border for graphs", async ({ page }) => {
+    for (let x: number = 0; x < reportTitle.length; x++) {
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("border", "2px solid rgb(51, 51, 51)");
     }
   });
 
