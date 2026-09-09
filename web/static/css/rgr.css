@@ -40,4 +40,6 @@
 
  .graph {
    border: 2px solid #333;
+   width: 300px;
+   height: 200px;
  }

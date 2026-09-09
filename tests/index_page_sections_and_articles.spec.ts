@@ -82,6 +82,18 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
+  test("the 4 unique articles within the first section will have unique divs with width of 200px", async ({ page }) => {
+    for (let x: number = 0; x < reportTitle.length; x++) {
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("width", "300px");
+    }
+  });
+
+  test("the 4 unique articles within the first section will have unique divs with height of 100px", async ({ page }) => {
+    for (let x: number = 0; x < reportTitle.length; x++) {
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("height", "200px");
+    }
+  });
+
   test("the 4 unique articles within the first section will have unique divs for the graph with a unique css id", async ({
     page,
   }) => {
