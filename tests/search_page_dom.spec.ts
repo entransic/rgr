@@ -13,9 +13,9 @@ test.describe("Basic tests for Search page", () => {
 
   //
   // BEFORE ALL SETUP
-  // OPEN BROWSER AND GOTO INDEX PAGE 
+  // OPEN BROWSER AND GOTO INDEX PAGE
   //
-  
+
   test.beforeAll(async ({ browser }) => {
     sharedContext = await browser.newContext();
     searchPage = await sharedContext.newPage();
@@ -24,9 +24,9 @@ test.describe("Basic tests for Search page", () => {
   });
 
   //
-  // TESTS 
+  // TESTS
   //
-  
+
   test('search page exists and root is present"', async ({ page }) => {
     await expect(searchPage).toHaveURL(searchURL);
   });
@@ -46,13 +46,12 @@ test.describe("Basic tests for Search page", () => {
   test("search page will have a <aside> element within <body>", async ({ page }) => {
     await expect(searchPage.locator("body").filter({ has: searchPage.locator("aside") })).toBeAttached();
   });
-  
+
   //
   // AFTER ALL TEARDOWN
   //
-  
+
   test.afterAll(async () => {
     await sharedContext.close();
   });
 });
-

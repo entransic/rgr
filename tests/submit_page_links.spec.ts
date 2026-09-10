@@ -11,12 +11,11 @@ let submitURL: string = "/submit";
 test.describe("Basic tests for submit page links", () => {
   test.describe.configure({ mode: "parallel" });
 
-
-  // 
-  // BEFORE ALL SETUP
-  // OPEN BROWSER AND GOTO PAGE 
   //
-  
+  // BEFORE ALL SETUP
+  // OPEN BROWSER AND GOTO PAGE
+  //
+
   test.beforeAll(async ({ browser }) => {
     sharedContext = await browser.newContext();
     submitPage = await sharedContext.newPage();
@@ -25,7 +24,7 @@ test.describe("Basic tests for submit page links", () => {
   });
 
   //
-  // TESTS 
+  // TESTS
   //
 
   test("Home can be selected and takes the user to the home page", async ({ page }) => {
@@ -48,12 +47,11 @@ test.describe("Basic tests for submit page links", () => {
     await expect(submitPage).toHaveURL(submitURL);
   });
 
-  // 
+  //
   // AFTER ALL TEARDOWN
   //
-  
+
   test.afterAll(async () => {
     await sharedContext.close();
   });
 });
-

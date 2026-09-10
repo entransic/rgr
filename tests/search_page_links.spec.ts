@@ -11,11 +11,11 @@ let submitURL: string = "/submit";
 test.describe("Basic tests for Search page", () => {
   test.describe.configure({ mode: "parallel" });
 
-  // 
-  // BEFORE ALL SETUP
-  // OPEN BROWSER AND GOTO PAGE 
   //
-  
+  // BEFORE ALL SETUP
+  // OPEN BROWSER AND GOTO PAGE
+  //
+
   test.beforeAll(async ({ browser }) => {
     sharedContext = await browser.newContext();
     searchPage = await sharedContext.newPage();
@@ -24,9 +24,9 @@ test.describe("Basic tests for Search page", () => {
   });
 
   //
-  // TESTS 
+  // TESTS
   //
-  
+
   test("Home can be selected and takes the user to the home page", async ({ page }) => {
     await searchPage.getByRole("link", { name: "Home" }).click();
     await expect(searchPage).toHaveURL(homeURL);
@@ -48,11 +48,10 @@ test.describe("Basic tests for Search page", () => {
   });
 
   //
-  // AFTER ALL TEARDOWN 
+  // AFTER ALL TEARDOWN
   //
-  
+
   test.afterAll(async () => {
     await sharedContext.close();
   });
 });
-

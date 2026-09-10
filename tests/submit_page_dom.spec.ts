@@ -11,12 +11,11 @@ let submitURL: string = "/submit";
 test.describe("Basic tests for submit page DOM", () => {
   test.describe.configure({ mode: "parallel" });
 
-
   //
   // BEFORE ALL SETUP
-  // OPEN BROWSER AND GOTO PAGE 
+  // OPEN BROWSER AND GOTO PAGE
   //
-  
+
   test.beforeAll(async ({ browser }) => {
     sharedContext = await browser.newContext();
     submitPage = await sharedContext.newPage();
@@ -25,9 +24,9 @@ test.describe("Basic tests for submit page DOM", () => {
   });
 
   //
-  // TESTS 
+  // TESTS
   //
-  
+
   test('submit page exists and root is present"', async ({ page }) => {
     await expect(submitPage).toHaveURL(searchURL);
   });
@@ -49,11 +48,10 @@ test.describe("Basic tests for submit page DOM", () => {
   });
 
   //
-  // AFTER ALL TEARDOWN 
+  // AFTER ALL TEARDOWN
   //
-  
+
   test.afterAll(async () => {
     await sharedContext.close();
   });
 });
-

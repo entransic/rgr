@@ -9,9 +9,8 @@ let searchURL: string = "/search";
 let submitURL: string = "/submit";
 
 test.describe("Basic tests for index page DOM", () => {
-
   test.describe.configure({ mode: "parallel" });
- 
+
   //
   // BEFORE EACH SETUP
   //
@@ -26,7 +25,7 @@ test.describe("Basic tests for index page DOM", () => {
   //
   // TESTS
   //
-  
+
   test('index page exists and root is present"', async ({ page }) => {
     await expect(homePage).toHaveURL(homeURL);
   });
@@ -46,13 +45,12 @@ test.describe("Basic tests for index page DOM", () => {
   test("index page will have a <aside> element within <body>", async ({ page }) => {
     await expect(homePage.locator("body").filter({ has: homePage.locator("aside") })).toBeAttached();
   });
-  
+
   //
   // AFTER ALL TEARDOWN
-  // 
-  
+  //
+
   test.afterAll(async () => {
     await sharedContext.close();
   });
 });
-

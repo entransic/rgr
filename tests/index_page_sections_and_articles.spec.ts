@@ -53,36 +53,35 @@ test.describe("Basic tests for Home page", () => {
   });
 
   //
-  // TEST OF MEDIA WIDTH FOR GRID 
+  // TEST OF MEDIA WIDTH FOR GRID
   //
   test("the first section will have padding of 15px, 30px", async ({ page }) => {
-    await homePage.setViewportSize({width: 1380, height:1080})
+    await homePage.setViewportSize({ width: 1380, height: 1080 });
     await expect(homePage.locator("section").nth(0)).toHaveCSS("padding", "15px 30px");
   });
 
   test("the first section will have display: grid", async ({ page }) => {
-    await homePage.setViewportSize({width: 1380, height:1080})
+    await homePage.setViewportSize({ width: 1380, height: 1080 });
     await expect(homePage.locator("section").nth(0)).toHaveCSS("display", "grid");
   });
-  
+
   test("the first section will have grid gap of 1rem", async ({ page }) => {
-    await homePage.setViewportSize({width: 1380, height:1080})
+    await homePage.setViewportSize({ width: 1380, height: 1080 });
     await expect(homePage.locator("section").nth(0)).toHaveCSS("grid-gap", "16px");
   });
- 
+
   //
-  // TEST OF MEDIA WIDTH FOR FLEX 
+  // TEST OF MEDIA WIDTH FOR FLEX
   //
   test("the first section will have padding of 30px", async ({ page }) => {
-    await homePage.setViewportSize({width: 1280, height:1080})
+    await homePage.setViewportSize({ width: 1280, height: 1080 });
     await expect(homePage.locator("section").nth(0)).toHaveCSS("padding", "30px");
   });
 
   test("the first section will have display: flex", async ({ page }) => {
-    await homePage.setViewportSize({width: 1280, height:1080})
+    await homePage.setViewportSize({ width: 1280, height: 1080 });
     await expect(homePage.locator("section").nth(0)).toHaveCSS("display", "flex");
   });
-  
 
   test("the 4 unique articles within the first section will have unique titles for the report types", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
@@ -104,7 +103,10 @@ test.describe("Basic tests for Home page", () => {
 
   test("the 4 unique articles within the first section will have unique divs with a border for graphs", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("border", "1px solid rgb(51, 51, 51)");
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS(
+        "border",
+        "1px solid rgb(51, 51, 51)",
+      );
     }
   });
 
@@ -122,7 +124,10 @@ test.describe("Basic tests for Home page", () => {
 
   test("the 4 unique articles within the first section will have unique divs with border-radius of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("border-radius", "10px");
+      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS(
+        "border-radius",
+        "10px",
+      );
     }
   });
 
@@ -131,7 +136,7 @@ test.describe("Basic tests for Home page", () => {
       await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("padding", "10px");
     }
   });
-  
+
   test("the 4 unique articles within the first section will have unique divs with margin of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("margin", "10px 5px");
