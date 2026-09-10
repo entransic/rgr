@@ -40,14 +40,35 @@
  }
 
  .graph {
-   border: 2px solid #333;
+   border: 1px solid #333;
    width: 600px;
    height: 300px;
    border-radius: 10px;
    padding: 10px;
    margin: 10px 5px;
  }
-
+@media screen and (min-width: 1370px) {
  section {
+   width: 1200px;
    padding: 15px 30px;
+   display:grid;
+   grid-template-columns: 1fr 1fr;
+   grid-gap: 1rem;
+   align-items: center;
+ }}
+
+@media screen and (width < 1370px) {
+ section {
+   padding: 30px;
+   display:flex;
+   flex-direction:column;
+   justify-content: center
+ }}
+
+ h2{
+   padding: 0px 30px;
+ }
+
+ body{
+   min-width:660px
  }
