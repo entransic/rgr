@@ -9,8 +9,8 @@ let searchURL: string = "/search";
 let submitURL: string = "/submit";
 let reportTitle: string[] = ["open/closed", "find rate", "fix rate", "by status"];
 let reportArticleID: string[] = ["report-open-closed", "report-find-rate", "report-fix-rate", "report-by-status"];
-let graphID: string[] = ["graph-open-closed", "graph-find-rate", "graph-fix-rate", "graph-by-status"]
-let projects = ["Netscape Navigator", "AOL Navigator", "Mozilla Phoenix"]
+let graphID: string[] = ["graph-open-closed", "graph-find-rate", "graph-fix-rate", "graph-by-status"];
+let projects = ["Netscape Navigator", "AOL Navigator", "Mozilla Phoenix"];
 
 test.describe("Basic tests for Home page", () => {
   test.describe.configure({ mode: "parallel" });
@@ -46,15 +46,15 @@ test.describe("Basic tests for Home page", () => {
   test("index page will have a label for selecting a project from a drop down list`", async ({ page }) => {
     await expect(homePage.locator("main").filter({ has: homePage.locator("label") })).toBeAttached();
   });
-  
+
   test("the label for selecting a project from a drop down list will be 'Select a project'", async ({ page }) => {
     await expect(homePage.locator("main").filter({ has: homePage.locator("label") })).toContainText("Select a project");
   });
-  
+
   test("the list of projects will include all the browsers", async ({ page }) => {
-      await expect(homePage.locator("option")).toHaveCount(Number(projects.length));
+    await expect(homePage.locator("option")).toHaveCount(Number(projects.length));
   });
-  
+
   test("the list of projects in dropdown will contain the name of projects to select", async ({ page }) => {
     for (let x; x < projects.length; x++) {
       await expect(homePage.locator("option").nth(x)).toContainText(projects[x]);
@@ -112,7 +112,7 @@ test.describe("Basic tests for Home page", () => {
   //
   // END MEDIA WIDTH TEST
   //
-  
+
   test("the 4 unique articles within the first section will have unique titles for the report types", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("h3")).toContainText(reportTitle[x]);
