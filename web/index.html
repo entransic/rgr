@@ -12,6 +12,7 @@
       {{ template "nav" . }}
     </header>
     <main>
+      <section id="pageTitle">
       <h2>bug status</h2>
       <label for=project>Select a project</label>
       <select>
@@ -19,7 +20,8 @@
         <option value="phoenix">Mozilla Phoenix</option>
         <option value="aol">AOL Navigator</option>
       </select>
-      <section>
+        </section>
+      <section id="reports">
         <article id="report-open-closed">
           <h3>open/closed</h3>
           <div id="graph-open-closed" class="graph"></div>

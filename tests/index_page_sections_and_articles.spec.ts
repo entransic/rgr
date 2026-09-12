@@ -31,7 +31,15 @@ test.describe("Basic tests for Home page", () => {
   // TESTS
   //
 
-  test("index page will have a <section> element within <main> for description of app", async ({ page }) => {
+  test("index page will have a <section> element with id=pageTitle", async ({ page }) => {
+    await expect(homePage.locator("[id=pageTitle]")).toBeAttached();
+  });
+
+  test("index page will have a <section> element with id=reports", async ({ page }) => {
+    await expect(homePage.locator("[id=reports]")).toBeAttached();
+  });
+
+  test("index page will have a <section> element within <main> for heading of reports", async ({ page }) => {
     await expect(homePage.locator("main").filter({ has: homePage.locator("section") })).toBeAttached();
   });
 
@@ -58,12 +66,12 @@ test.describe("Basic tests for Home page", () => {
   });
 
   test("index page will have at least 4 articles within the section", async ({ page }) => {
-    await expect(homePage.locator("section").nth(0).locator("article").nth(3)).toBeAttached();
+    await expect(homePage.locator("section").nth(1).locator("article").nth(3)).toBeAttached();
   });
 
   test("index page will have 4 unique articles within the section", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x)).toBeAttached();
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x)).toBeAttached();
     }
   });
 
@@ -76,17 +84,17 @@ test.describe("Basic tests for Home page", () => {
   //
   test("the first section will have padding of 15px, 30px", async ({ page }) => {
     await homePage.setViewportSize({ width: 1380, height: 1080 });
-    await expect(homePage.locator("section").nth(0)).toHaveCSS("padding", "15px 30px");
+    await expect(homePage.locator("section").nth(1)).toHaveCSS("padding", "15px 30px");
   });
 
   test("the first section will have display: grid", async ({ page }) => {
     await homePage.setViewportSize({ width: 1380, height: 1080 });
-    await expect(homePage.locator("section").nth(0)).toHaveCSS("display", "grid");
+    await expect(homePage.locator("section").nth(1)).toHaveCSS("display", "grid");
   });
 
   test("the first section will have grid gap of 1rem", async ({ page }) => {
     await homePage.setViewportSize({ width: 1380, height: 1080 });
-    await expect(homePage.locator("section").nth(0)).toHaveCSS("grid-gap", "16px");
+    await expect(homePage.locator("section").nth(1)).toHaveCSS("grid-gap", "16px");
   });
 
   //
@@ -94,12 +102,12 @@ test.describe("Basic tests for Home page", () => {
   //
   test("the first section will have padding of 30px", async ({ page }) => {
     await homePage.setViewportSize({ width: 1280, height: 1080 });
-    await expect(homePage.locator("section").nth(0)).toHaveCSS("padding", "30px");
+    await expect(homePage.locator("section").nth(1)).toHaveCSS("padding", "30px");
   });
 
   test("the first section will have display: flex", async ({ page }) => {
     await homePage.setViewportSize({ width: 1280, height: 1080 });
-    await expect(homePage.locator("section").nth(0)).toHaveCSS("display", "flex");
+    await expect(homePage.locator("section").nth(1)).toHaveCSS("display", "flex");
   });
   //
   // END MEDIA WIDTH TEST
@@ -107,25 +115,25 @@ test.describe("Basic tests for Home page", () => {
   
   test("the 4 unique articles within the first section will have unique titles for the report types", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("h3")).toContainText(reportTitle[x]);
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("h3")).toContainText(reportTitle[x]);
     }
   });
 
   test("the 4 unique articles within the first section will have unique divs for the graph", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toBeAttached();
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toBeAttached();
     }
   });
 
   test("the 4 unique articles within the first section will have unique divs with CSS class for graphs", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toContainClass("graph");
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toContainClass("graph");
     }
   });
 
   test("the 4 unique articles within the first section will have unique divs with a border for graphs", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS(
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS(
         "border",
         "1px solid rgb(51, 51, 51)",
       );
@@ -134,19 +142,19 @@ test.describe("Basic tests for Home page", () => {
 
   test("the 4 unique articles within the first section will have unique divs with width of 500px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("width", "600px");
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("width", "600px");
     }
   });
 
   test("the 4 unique articles within the first section will have unique divs with height of 300px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("height", "300px");
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("height", "300px");
     }
   });
 
   test("the 4 unique articles within the first section will have unique divs with border-radius of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS(
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS(
         "border-radius",
         "10px",
       );
@@ -155,13 +163,13 @@ test.describe("Basic tests for Home page", () => {
 
   test("the 4 unique articles within the first section will have unique divs with padding of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("padding", "10px");
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("padding", "10px");
     }
   });
 
   test("the 4 unique articles within the first section will have unique divs with margin of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveCSS("margin", "10px 5px");
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("margin", "10px 5px");
     }
   });
 
@@ -169,13 +177,13 @@ test.describe("Basic tests for Home page", () => {
     page,
   }) => {
     for (let x = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x).locator("div")).toHaveId(graphID[x]);
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveId(graphID[x]);
     }
   });
 
   test("the 4 unique articles within the first section will have unique ids for the reports", async ({ page }) => {
     for (let x = 0; x < reportTitle.length; x++) {
-      await expect(homePage.locator("section").nth(0).locator("article").nth(x)).toHaveId(reportArticleID[x]);
+      await expect(homePage.locator("section").nth(1).locator("article").nth(x)).toHaveId(reportArticleID[x]);
     }
   });
 
