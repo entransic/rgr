@@ -47,7 +47,7 @@ test.describe("Basic tests for Home page", () => {
       await expect(homePage.locator("option")).toHaveCount(Number(projects.length));
   });
   
-  test("the list of projects in dropdown will contain the name of browsers", async ({ page }) => {
+  test("the list of projects in dropdown will contain the name of projects to select", async ({ page }) => {
     for (let x; x < projects.length; x++) {
       await expect(homePage.locator("option").nth(x)).toContainText(projects[x]);
     }
