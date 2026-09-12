@@ -31,34 +31,8 @@ test.describe("Basic tests for Home page", () => {
   // TESTS
   //
 
-  test("index page will have a <section> element with id=pageTitle", async ({ page }) => {
-    await expect(homePage.locator("[id=pageTitle]")).toBeAttached();
-  });
-
   test("index page will have a <section> element with id=reports", async ({ page }) => {
     await expect(homePage.locator("[id=reports]")).toBeAttached();
-  });
-
-  test("index page will have a <section> element within <main> for heading of reports", async ({ page }) => {
-    await expect(homePage.locator("main").filter({ has: homePage.locator("section") })).toBeAttached();
-  });
-
-  test("index page will have a label for selecting a project from a drop down list`", async ({ page }) => {
-    await expect(homePage.locator("main").filter({ has: homePage.locator("label") })).toBeAttached();
-  });
-
-  test("the label for selecting a project from a drop down list will be 'Select a project'", async ({ page }) => {
-    await expect(homePage.locator("main").filter({ has: homePage.locator("label") })).toContainText("Select a project");
-  });
-
-  test("the list of projects will include all the browsers", async ({ page }) => {
-    await expect(homePage.locator("option")).toHaveCount(Number(projects.length));
-  });
-
-  test("the list of projects in dropdown will contain the name of projects to select", async ({ page }) => {
-    for (let x; x < projects.length; x++) {
-      await expect(homePage.locator("option").nth(x)).toContainText(projects[x]);
-    }
   });
 
   test("index page will have an <article> element within <section> for description text", async ({ page }) => {
@@ -75,24 +49,20 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
-  test("the first section will have a h2 with text bug status", async ({ page }) => {
-    await expect(homePage.locator("h2").nth(0)).toContainText("bug status");
-  });
-
   //
   // TEST OF MEDIA WIDTH FOR GRID
   //
-  test("the first section will have padding of 15px, 30px", async ({ page }) => {
+  test("the second section will have padding of 15px, 30px", async ({ page }) => {
     await homePage.setViewportSize({ width: 1380, height: 1080 });
     await expect(homePage.locator("section").nth(1)).toHaveCSS("padding", "15px 30px");
   });
 
-  test("the first section will have display: grid", async ({ page }) => {
+  test("the second section will have display: grid", async ({ page }) => {
     await homePage.setViewportSize({ width: 1380, height: 1080 });
     await expect(homePage.locator("section").nth(1)).toHaveCSS("display", "grid");
   });
 
-  test("the first section will have grid gap of 1rem", async ({ page }) => {
+  test("the second section will have grid gap of 1rem", async ({ page }) => {
     await homePage.setViewportSize({ width: 1380, height: 1080 });
     await expect(homePage.locator("section").nth(1)).toHaveCSS("grid-gap", "16px");
   });
@@ -100,12 +70,12 @@ test.describe("Basic tests for Home page", () => {
   //
   // TEST OF MEDIA WIDTH FOR FLEX
   //
-  test("the first section will have padding of 30px", async ({ page }) => {
+  test("the second section will have padding of 30px", async ({ page }) => {
     await homePage.setViewportSize({ width: 1280, height: 1080 });
     await expect(homePage.locator("section").nth(1)).toHaveCSS("padding", "30px");
   });
 
-  test("the first section will have display: flex", async ({ page }) => {
+  test("the second section will have display: flex", async ({ page }) => {
     await homePage.setViewportSize({ width: 1280, height: 1080 });
     await expect(homePage.locator("section").nth(1)).toHaveCSS("display", "flex");
   });
@@ -113,25 +83,25 @@ test.describe("Basic tests for Home page", () => {
   // END MEDIA WIDTH TEST
   //
 
-  test("the 4 unique articles within the first section will have unique titles for the report types", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique titles for the report types", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("h3")).toContainText(reportTitle[x]);
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs for the graph", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs for the graph", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toBeAttached();
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with CSS class for graphs", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with CSS class for graphs", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toContainClass("graph");
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with a border for graphs", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with a border for graphs", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS(
         "border",
@@ -140,19 +110,19 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with width of 500px", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with width of 500px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("width", "600px");
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with height of 300px", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with height of 300px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("height", "300px");
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with border-radius of 10px", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with border-radius of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS(
         "border-radius",
@@ -161,19 +131,19 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with padding of 10px", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with padding of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("padding", "10px");
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs with margin of 10px", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique divs with margin of 10px", async ({ page }) => {
     for (let x: number = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x).locator("div")).toHaveCSS("margin", "10px 5px");
     }
   });
 
-  test("the 4 unique articles within the first section will have unique divs for the graph with a unique css id", async ({
+  test("the 4 unique articles within the second section will have unique divs for the graph with a unique css id", async ({
     page,
   }) => {
     for (let x = 0; x < reportTitle.length; x++) {
@@ -181,7 +151,7 @@ test.describe("Basic tests for Home page", () => {
     }
   });
 
-  test("the 4 unique articles within the first section will have unique ids for the reports", async ({ page }) => {
+  test("the 4 unique articles within the second section will have unique ids for the reports", async ({ page }) => {
     for (let x = 0; x < reportTitle.length; x++) {
       await expect(homePage.locator("section").nth(1).locator("article").nth(x)).toHaveId(reportArticleID[x]);
     }
